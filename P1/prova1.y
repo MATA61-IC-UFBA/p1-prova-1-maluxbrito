@@ -46,20 +46,25 @@ stmt
 ;
 
 exprlist
-: exprlist
-: expr                
+: expr               
 | exprlist COMMA expr 
 ;
 
 expr
 : expnum
 | expstr
+| IDENT
 ;
 
 expstr
-: acoes
- 
+: CONCAT LPAREN termostr RPAREN
+| LENGHT LPAREN STRING RPAREN
+;
 
+termostr
+: STRING
+| STRING COMMA termostr
+;
 
 expnum
 : termo
@@ -79,5 +84,4 @@ fator
     ;
 
 %%
-
 
