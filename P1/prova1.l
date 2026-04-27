@@ -41,3 +41,7 @@ int yylex();
 .            { return ERROR; }
 
 %%
+
+.            { return ERROR; }
+
+%%
