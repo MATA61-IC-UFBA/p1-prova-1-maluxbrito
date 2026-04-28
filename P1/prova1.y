@@ -54,16 +54,12 @@ expr
 : expnum
 | expstr
 | IDENT
+| STRING
 ;
 
 expstr
-: CONCAT LPAREN termostr RPAREN
-| LENGHT LPAREN STRING RPAREN
-;
-
-termostr
-: STRING
-| STRING COMMA termostr
+: CONCAT LPAREN exprlist RPAREN
+| LENGHT LPAREN expr RPAREN
 ;
 
 expnum
@@ -82,6 +78,5 @@ fator
     : NUM
     | LPAREN expnum RPAREN
     ;
-
 %%
 

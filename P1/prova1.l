@@ -12,7 +12,7 @@ int yylex();
 %%
 
 
-[ \t]+              ;   
+[ \t\n\r]+              ;   
 
 "//".* ; 
 
@@ -22,7 +22,7 @@ int yylex();
 
 [a-zA-Z][a-zA-Z0-9_]{0,255}    { return IDENT; }
 
-\"[a-zA-Z]+"    { return STRING; }
+\"[^\"]*\"   { return STRING; }
 
 [0-9]+(\.[0-9]+)?   { return NUM; }
 
@@ -34,13 +34,6 @@ int yylex();
 ")"     { return RPAREN; }
 "="     { return ASSIGN; }
 ","     { return COMMA; }
-
-
-\n      { return EOL; }
-
-.            { return ERROR; }
-
-%%
 
 .            { return ERROR; }
 
